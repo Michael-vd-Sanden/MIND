@@ -20,4 +20,9 @@ public class SceneSwitch : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadPicture()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

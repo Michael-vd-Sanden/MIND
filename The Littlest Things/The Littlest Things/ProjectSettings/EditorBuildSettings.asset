@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3. Scenes/Start.unity
     guid: b2aa94a906768304582407a648e8f02c
+  - enabled: 1
+    path: Assets/3. Scenes/PictureTime.unity
+    guid: 3a56b3b3a3fa6a14a88240cf8af555bd
   m_configObjects: {}
