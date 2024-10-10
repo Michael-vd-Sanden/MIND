@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3. Scenes/PictureTime.unity
     guid: 3a56b3b3a3fa6a14a88240cf8af555bd
+  - enabled: 1
+    path: Assets/3. Scenes/Cafeteria.unity
+    guid: 7adcee7b49c1ad24aa9ed15fa77fa6c8
   m_configObjects: {}
