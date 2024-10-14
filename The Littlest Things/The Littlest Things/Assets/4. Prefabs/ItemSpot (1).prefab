@@ -133,6 +133,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7455212421738667608}
+        m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
+        m_MethodName: DropItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &524049256918562945
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ed7d3c25eb83a4ebd475750040b345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptySprite: {fileID: 21300000, guid: 70e433de46068504fa56fcf7f49b32b1, type: 3}
   itemName: Item name
   itemSprite: {fileID: 0}
   isFull: 0

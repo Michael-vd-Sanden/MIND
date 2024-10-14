@@ -1,17 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
     public ItemSlot[] itemSlot;
-    public void AddItem(string itemName, Sprite itemSprite)
+
+    public Item[] availableItems;
+
+    private void Start()
+    {
+        itemSlot[0].selectedShader.SetActive(true);
+        itemSlot[0].thisItemSelected = true;
+    }
+    public void AddItem(string itemName, Sprite itemSprite, int itemID)
     {
         for (int i = 0; i< itemSlot.Length; i++) 
         { 
             if (itemSlot[i].isFull == false) 
             {
-                itemSlot[i].AddItem(itemName, itemSprite);
+                itemSlot[i].AddItem(itemName, itemSprite, itemID);
                 return;
             }
         }
@@ -23,6 +32,18 @@ public class InventoryManager : MonoBehaviour
         {
             itemSlot[i].selectedShader.SetActive(false);
             itemSlot[i].thisItemSelected = false;
+        }
+    }
+
+    public void GiveItem(int ItemID) //the id of the correct item
+    {
+        for (int i = 0; i < itemSlot.Length; i++)
+        {
+            if (itemSlot[i].thisItemSelected == true)
+            {
+                itemSlot[i].GiveSelectedItem(ItemID);
+                return;
+            }
         }
     }
 }
