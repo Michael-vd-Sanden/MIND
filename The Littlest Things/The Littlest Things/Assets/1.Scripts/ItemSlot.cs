@@ -17,6 +17,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public bool thisItemSelected;
     public TMP_Text nameText;
     public GameObject deleteBtn;
+    public TMP_Text descriptionText;
+    public string itemDescription;
     
     private InventoryManager inventoryManager;
     private GameObject player;
@@ -30,15 +32,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         nameText.text = itemName;
     }
 
-    public void AddItem(string itemName, Sprite itemSprite, int itemID)
+    public void AddItem(string itemName, Sprite itemSprite, string itemDescription, int itemID)
     {
         this.itemName = itemName;
         this.itemSprite = itemSprite;
+        this.itemDescription = itemDescription;
         this.thisItemID = itemID;
         isFull = true;
 
         itemImage.sprite = itemSprite;
         nameText.text = itemName;
+        descriptionText.text = itemDescription;
         nameText.gameObject.SetActive(true);
         deleteBtn.SetActive(true);
         //ConversationManager.Instance.SetBool("hasItems", true);

@@ -5,15 +5,36 @@ using UnityEngine;
 public class TriggerBtn : MonoBehaviour
 {
     public GameObject triggerBtn;
+    public bool hasConversation;
+
+    private bool hasEntered;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        triggerBtn.SetActive(true);
-        Debug.Log("Enter");
+        hasEntered = true;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        triggerBtn.SetActive(false);
-        Debug.Log("exit");
+        hasEntered = false;
+    }
+
+    private void Update()
+    {
+        if (hasEntered) 
+        {
+            if (hasConversation)
+            {
+                triggerBtn.SetActive(true);
+            }
+            else 
+            {
+                triggerBtn.SetActive(false);
+            }
+        }
+        else
+        {
+            triggerBtn.SetActive(false);
+        }
     }
 }

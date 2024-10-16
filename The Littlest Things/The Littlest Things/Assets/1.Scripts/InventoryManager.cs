@@ -14,13 +14,13 @@ public class InventoryManager : MonoBehaviour
         itemSlot[0].selectedShader.SetActive(true);
         itemSlot[0].thisItemSelected = true;
     }
-    public void AddItem(string itemName, Sprite itemSprite, int itemID)
+    public void AddItem(string itemName, Sprite itemSprite, string itemDescription, int itemID)
     {
         for (int i = 0; i< itemSlot.Length; i++) 
         { 
             if (itemSlot[i].isFull == false) 
             {
-                itemSlot[i].AddItem(itemName, itemSprite, itemID);
+                itemSlot[i].AddItem(itemName, itemSprite, itemDescription, itemID);
                 return;
             }
         }

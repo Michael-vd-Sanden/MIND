@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private string itemName;
     [SerializeField] private Sprite sprite;
+    [TextArea][SerializeField] private string itemDescription;
     [SerializeField] public int itemID;
 
     public GameObject textE;
@@ -29,7 +30,7 @@ public class Item : MonoBehaviour
     {
         if (inRange && Input.GetKeyDown(KeyCode.E))
         {
-            inventoryManager.AddItem(itemName, sprite, itemID);
+            inventoryManager.AddItem(itemName, sprite, itemDescription, itemID);
             gameObject.SetActive(false);
         }
     }

@@ -5,26 +5,35 @@ using DialogueEditor;
 
 public class DialogStarter : MonoBehaviour
 {
-    public NPCConversation first;
-    public NPCConversation second;
-    private NPCConversation currentConvo;
-    private int convoNumber = 1;
+    public PlayerMovement2D player;
+    public TriggerBtn trigger;
+
+    public NPCConversation[] convoList;
+    private int convoNmbr = 0;
+
+    private void Update()
+    {
+        if (ConversationManager.Instance.IsConversationActive)
+        {
+            player.enabled = false;
+        }
+        else
+        {
+            player.enabled = true;
+        }
+    }
 
     public void Talk()
     {
-        switch (convoNumber)
+        ConversationManager.Instance.StartConversation(convoList[convoNmbr]);
+        if ((convoList.Length - 1) > convoNmbr)
         {
-            case 1:
-                currentConvo = first; break;
-            case 2:
-                currentConvo = second; break;
+            convoNmbr++;
         }
-        if (currentConvo != null)
+        else
         {
-            ConversationManager.Instance.StartConversation(currentConvo);
-            convoNumber++;
+            trigger.hasConversation = false;
         }
-        
     }
 
 }
