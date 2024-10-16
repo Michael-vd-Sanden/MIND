@@ -38,6 +38,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         isFull = true;
 
         itemImage.sprite = itemSprite;
+        nameText.text = itemName;
         nameText.gameObject.SetActive(true);
         deleteBtn.SetActive(true);
         //ConversationManager.Instance.SetBool("hasItems", true);
@@ -78,7 +79,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         //remove from list
         this.itemImage.sprite = emptySprite;
-        this.itemName = null;
+        this.itemName = "";
         nameText.gameObject.SetActive(false);
         deleteBtn.gameObject.SetActive(false);
         isFull = false;
