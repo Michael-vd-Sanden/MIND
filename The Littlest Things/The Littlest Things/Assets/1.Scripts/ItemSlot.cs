@@ -42,7 +42,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         itemImage.sprite = itemSprite;
         nameText.text = itemName;
-        descriptionText.text = itemDescription;
         nameText.gameObject.SetActive(true);
         deleteBtn.SetActive(true);
         //ConversationManager.Instance.SetBool("hasItems", true);
@@ -61,6 +60,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager.DeselectAll();
         selectedShader.SetActive(true);
         thisItemSelected = true;
+        descriptionText.text = itemDescription;
     }
 
     public void GiveSelectedItem(int ItemID)
@@ -84,6 +84,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         //remove from list
         this.itemImage.sprite = emptySprite;
         this.itemName = "";
+        this.itemDescription = "";
+        this.descriptionText.text = itemDescription;
         nameText.gameObject.SetActive(false);
         deleteBtn.gameObject.SetActive(false);
         isFull = false;
