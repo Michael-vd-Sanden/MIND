@@ -9,14 +9,16 @@ public class popularity : MonoBehaviour
     private int maxPopularity;
     private int minPopularity;
 
+    public TMP_Text chocolateText;
+
     public Slider popularitySlider;
     public TMP_Text objectiveText;
 
     private void Start()
     {
-        popularityPoints = 0;
+        popularityPoints = 2;
         minPopularity = 0;
-        maxPopularity = 10;
+        maxPopularity = 2;
     }
 
     public void changePopularity(int popChange)
@@ -25,7 +27,8 @@ public class popularity : MonoBehaviour
         if(popularityPoints > maxPopularity) popularityPoints = maxPopularity;
         if(popularityPoints < minPopularity) popularityPoints = minPopularity;
 
-        popularitySlider.value = popularityPoints;
+        chocolateText.text = popularityPoints.ToString();
+        //popularitySlider.value = popularityPoints;
     }
 
     public void ChangeObjective()
