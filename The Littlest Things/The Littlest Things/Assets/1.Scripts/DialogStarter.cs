@@ -16,6 +16,9 @@ public class DialogStarter : MonoBehaviour
 
     public bool isRound2 = false;
 
+    public GameObject[] triggerBtns;
+    private GameObject triggerCanvas;
+
     public void changeRounds()
     {
         isRound2 = true;
@@ -34,10 +37,20 @@ public class DialogStarter : MonoBehaviour
         if (ConversationManager.Instance.IsConversationActive)
         {
             player.enabled = false;
+            foreach (GameObject t in triggerBtns)
+            {
+                triggerCanvas = t.transform.GetChild(0).gameObject;
+                triggerCanvas.SetActive(false);
+            }
         }
         else
         {
             player.enabled = true;
+            foreach (GameObject t in triggerBtns)
+            {
+                triggerCanvas = t.transform.GetChild(0).gameObject;
+                triggerCanvas.SetActive(true);
+            }
         }
     }
 

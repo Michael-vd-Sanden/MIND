@@ -19,6 +19,10 @@ public class TriggerBtn : MonoBehaviour
         hasEntered = false;
     }
 
+    public void changeHasConversation(bool change)
+    {
+        hasConversation = change;
+    }
     private void Update()
     {
         if (hasEntered) 
