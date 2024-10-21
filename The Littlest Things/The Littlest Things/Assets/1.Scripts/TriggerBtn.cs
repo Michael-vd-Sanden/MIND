@@ -7,7 +7,7 @@ public class TriggerBtn : MonoBehaviour
     public GameObject triggerBtn;
     public bool hasConversation;
 
-    private bool hasEntered;
+    public bool hasEntered;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -15,6 +15,7 @@ public class DialogStarter : MonoBehaviour
     private int convoNmbrRound2 = 0;
 
     public bool isRound2 = false;
+    public bool isLooping = false;
 
     public GameObject[] triggerBtns;
     private GameObject triggerCanvas;
@@ -75,7 +76,14 @@ public class DialogStarter : MonoBehaviour
         }
         else
         {
-            trigger.hasConversation = false;
+            if (isLooping)
+            {
+                convoNmbrRound1 = 0;
+            }
+            else
+            {
+                trigger.hasConversation = false;
+            }
         }
     }
 
@@ -88,7 +96,14 @@ public class DialogStarter : MonoBehaviour
         }
         else
         {
-            trigger.hasConversation = false;
+            if (isLooping)
+            {
+                convoNmbrRound2 = 0;
+            }
+            else
+            { 
+                 trigger.hasConversation = false;
+            }
         }
     }
 
