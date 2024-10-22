@@ -21,7 +21,7 @@ public class popularity : MonoBehaviour
         maxPopularity = 2;
     }
 
-    public void changePopularity(int popChange)
+    public void changeChocolate(int popChange)
     {
         popularityPoints += popChange;
         if(popularityPoints > maxPopularity) popularityPoints = maxPopularity;

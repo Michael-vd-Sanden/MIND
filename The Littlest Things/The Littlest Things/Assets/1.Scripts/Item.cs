@@ -9,14 +9,20 @@ public class Item : MonoBehaviour
     [TextArea][SerializeField] private string itemDescription;
     [SerializeField] public int itemID;
 
+    [SerializeField] private AudioSource pickupSound;
+
     public GameObject textE;
     public InventoryManager inventoryManager;
+
+    public bool isStealing = false;
+    public GameObject teacher;
+    public float allowedDistance;
+    private float teacherDistance;
 
     private bool inRange;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        textE.SetActive(true);
         inRange = true;
     }
 
@@ -28,10 +34,39 @@ public class Item : MonoBehaviour
 
     private void Update()
     {
-        if (inRange && Input.GetKeyDown(KeyCode.E))
+        if (inRange)
         {
-            inventoryManager.AddItem(itemName, sprite, itemDescription, itemID);
-            gameObject.SetActive(false);
+            if (isStealing)
+            {
+                teacherDistance = Vector3.Distance(transform.position, teacher.transform.position);
+                if (teacherDistance > allowedDistance)
+                {
+                    textE.SetActive(true);
+                    if (Input.GetKeyUp(KeyCode.E))
+                    {
+                        checkE();
+                    }
+                }
+                else if (teacherDistance < allowedDistance) 
+                { 
+                    textE.SetActive(false);
+                }
+            }
+            else
+            {
+                textE.SetActive(true);
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    checkE();
+                }
+            }
         }
+    }
+
+    public void checkE()
+    {
+        inventoryManager.AddItem(itemName, sprite, itemDescription, itemID);
+        pickupSound.Play();
+        gameObject.SetActive(false);
     }
 }
