@@ -36,4 +36,9 @@ public class GameManager : MonoBehaviour
     {
         objectiveText.text = objective;
     }
+
+    public void NCPGivesItem(Item item)
+    {
+        item.checkE();
+    }
 }

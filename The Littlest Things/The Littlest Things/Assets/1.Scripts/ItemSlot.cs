@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using DialogueEditor;
+using static UnityEditor.Progress;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
@@ -22,7 +23,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     
     private InventoryManager inventoryManager;
     private GameObject player;
-    private int thisItemID;
+    public int thisItemID;
 
     [SerializeField] private Image itemImage;
     private void Start()
@@ -45,6 +46,20 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         nameText.gameObject.SetActive(true);
         deleteBtn.SetActive(true);
         //ConversationManager.Instance.SetBool("hasItems", true);
+    }
+
+    public void AddFullItem(Item item)
+    {
+        this.itemName = item.itemName;
+        this.itemSprite = item.sprite;
+        this.itemDescription = item.itemDescription;
+        this.thisItemID = item.itemID;
+        isFull = true;
+
+        itemImage.sprite = itemSprite;
+        nameText.text = itemName;
+        nameText.gameObject.SetActive(true);
+        deleteBtn.SetActive(true);
     }
 
     public void OnPointerClick(PointerEventData eventData)
