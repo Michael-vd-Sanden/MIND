@@ -1,3 +1,4 @@
+using DialogueEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,9 @@ public class ChewGum : MonoBehaviour
 
     public Item chewedGum;
     public GameObject pressX;
+
+    public ConversationManager conversationManager;
+    public NPCConversation distractionConvo;
     
     private void Update()
     {
@@ -63,6 +67,7 @@ public class ChewGum : MonoBehaviour
             {
                 pressX.SetActive(true);
                 isAllowed = true;
+                conversationManager.StartConversation(distractionConvo);
             }
         }
     }
