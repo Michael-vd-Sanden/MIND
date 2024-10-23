@@ -29,5 +29,10 @@ public class SceneSwitch : MonoBehaviour
     public void LoadCafe()
     {
         SceneManager.LoadScene(3);
-    }    
+    }  
+    
+    public void LoadEnding()
+    {
+        SceneManager.LoadScene(4);
+    }
 }

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3. Scenes/Cafeteria.unity
     guid: 7adcee7b49c1ad24aa9ed15fa77fa6c8
+  - enabled: 1
+    path: Assets/3. Scenes/Crowning.unity
+    guid: bae1f54e1b48af14bafca239c3977956
   m_configObjects: {}

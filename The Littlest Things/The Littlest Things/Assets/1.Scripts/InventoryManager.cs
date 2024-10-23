@@ -9,8 +9,6 @@ public class InventoryManager : MonoBehaviour
 
     public Item[] availableItems;
 
-    public ConversationManager conversationManager;
-
     public void AddItem(string itemName, Sprite itemSprite, string itemDescription, int itemID)
     {
         for (int i = 0; i< itemSlot.Length; i++) 
@@ -39,7 +37,6 @@ public class InventoryManager : MonoBehaviour
             if (itemSlot[i].thisItemID == ItemID)
             {
                 ConversationManager.Instance.SetBool("hasCorrectItem", true);
-                Debug.Log("yes");
                 return;
             }
         }
