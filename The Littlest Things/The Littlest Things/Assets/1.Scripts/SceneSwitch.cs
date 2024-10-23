@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
+    public GameObject blackScreen;
+
     public void PressStart()
     {
         SceneManager.LoadScene(1);
@@ -33,6 +35,13 @@ public class SceneSwitch : MonoBehaviour
     
     public void LoadEnding()
     {
+        StartCoroutine(endTransition());
+    }
+
+    private IEnumerator endTransition()
+    {
+        if(blackScreen!= null) { blackScreen.SetActive(true);}
+        yield return new WaitForSecondsRealtime(2f);
         SceneManager.LoadScene(4);
     }
 }

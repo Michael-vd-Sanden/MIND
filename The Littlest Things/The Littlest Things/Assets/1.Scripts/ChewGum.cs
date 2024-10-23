@@ -85,7 +85,7 @@ public class ChewGum : MonoBehaviour
     {
         foreach (ItemSlot i in inventoryManager.itemSlot)
         {
-            if (i.thisItemID == 2 && hasDistraction) //gumID
+            if (i.thisItemID == 3 && hasDistraction) //gumID
             {
                 pressX.SetActive(true);
                 isAllowed = true;
