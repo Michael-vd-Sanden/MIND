@@ -13,24 +13,45 @@ public class DialogStarter : MonoBehaviour
     private int convoNmbrRound1 = 0;
     public NPCConversation[] convoListRound2;
     private int convoNmbrRound2 = 0;
+    public NPCConversation[] convoListRound3;
+    private int convoNmbrRound3 = 0;
 
-    public bool isRound2 = false;
+    public int isRound = 1;
     public bool isLooping = false;
 
     public GameObject[] triggerBtns;
     private GameObject triggerCanvas;
 
-    public void changeRounds()
+    public void changeRounds(int round)
     {
-        isRound2 = true;
-        if (convoListRound2.Length > 0)
+        isRound = round;
+        switch (isRound)
         {
-            trigger.hasConversation = true;
-        }
-        else
-        {
-            trigger.hasConversation = false;
-        }
+            case 1:
+                if (convoListRound1.Length > 0)
+                { trigger.hasConversation = true; }
+                else
+                { trigger.hasConversation = false; }
+                break;
+            case 2:
+                if (convoListRound2.Length > 0)
+                { trigger.hasConversation = true; }
+                else
+                { trigger.hasConversation = false; }
+                break;
+            case 3:
+                if (convoListRound3.Length > 0)
+                { trigger.hasConversation = true; }
+                else
+                { trigger.hasConversation = false; }
+                break;
+        }    
+        
+    }
+
+    public void changeLooping(bool loopChange)
+    {
+        isLooping = loopChange;
     }
 
     private void Update()
@@ -57,13 +78,18 @@ public class DialogStarter : MonoBehaviour
 
     public void Talk()
     {
-        if(!isRound2)
+        switch (isRound)
         {
-            TalkRound1();
-        }
-        else
-        {
-            TalkRound2();
+            case 1:
+                TalkRound1();
+                break;
+            case 2:
+                TalkRound2();
+                break;
+            case 3:
+                TalkRound3();
+                break;
+
         }
     }
 
@@ -103,6 +129,26 @@ public class DialogStarter : MonoBehaviour
             else
             { 
                  trigger.hasConversation = false;
+            }
+        }
+    }
+
+    public void TalkRound3()
+    {
+        ConversationManager.Instance.StartConversation(convoListRound3[convoNmbrRound3]);
+        if ((convoListRound3.Length - 1) > convoNmbrRound3)
+        {
+            convoNmbrRound3++;
+        }
+        else
+        {
+            if (isLooping)
+            {
+                convoNmbrRound3 = 0;
+            }
+            else
+            {
+                trigger.hasConversation = false;
             }
         }
     }

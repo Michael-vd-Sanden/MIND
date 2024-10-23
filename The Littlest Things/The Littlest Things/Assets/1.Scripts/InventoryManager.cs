@@ -1,3 +1,4 @@
+using DialogueEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     public ItemSlot[] itemSlot;
 
     public Item[] availableItems;
+
+    public ConversationManager conversationManager;
 
     public void AddItem(string itemName, Sprite itemSprite, string itemDescription, int itemID)
     {
@@ -29,11 +32,25 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void CheckIfItemAvailable(int ItemID)
+    {
+        for(int i = 0; i < itemSlot.Length; i++)
+        {
+            if (itemSlot[i].thisItemID == ItemID)
+            {
+                ConversationManager.Instance.SetBool("hasCorrectItem", true);
+                Debug.Log("yes");
+                return;
+            }
+        }
+        ConversationManager.Instance.SetBool("hasCorrectItem", false);
+    }
+
     public void GiveItem(int ItemID) //the id of the correct item
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i].thisItemSelected == true)
+            if (itemSlot[i].thisItemID == ItemID)
             {
                 itemSlot[i].GiveSelectedItem(ItemID);
                 return;

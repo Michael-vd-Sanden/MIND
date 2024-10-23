@@ -7,6 +7,7 @@ public class ChewGum : MonoBehaviour
 {
     public bool isPlaying = false;
     public bool isAllowed = false;
+    public bool hasDistraction = false;
     public GameObject minigameObject;
     public Slider gumSlider;
     public InventoryManager inventoryManager;
@@ -58,7 +59,7 @@ public class ChewGum : MonoBehaviour
     {
         foreach (ItemSlot i in inventoryManager.itemSlot)
         {
-            if (i.thisItemID == 2) //gumID
+            if (i.thisItemID == 2 && hasDistraction) //gumID
             {
                 pressX.SetActive(true);
                 isAllowed = true;
@@ -70,5 +71,10 @@ public class ChewGum : MonoBehaviour
     {
         pressX.SetActive(false);
         isAllowed = false;
+    }
+
+    public void createDistraction()
+    {
+        hasDistraction = true;
     }
 }

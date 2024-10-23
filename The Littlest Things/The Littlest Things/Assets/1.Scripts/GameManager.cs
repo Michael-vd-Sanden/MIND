@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text objectiveText;
     public GameObject objectiveObject;
 
+    public TMP_Text secondaryObjectiveText;
+    public GameObject secondaryObjectiveObject;
+
     private void Start()
     {
         ConversationManager.Instance.StartConversation(startingConvo); 
@@ -35,6 +38,13 @@ public class GameManager : MonoBehaviour
     public void ChangeObjective(string objective)
     {
         objectiveText.text = objective;
+        objectiveObject.SetActive(true);
+    }
+
+    public void ChangeSecondObjective(string objective)
+    {
+        secondaryObjectiveText.text = objective;
+        secondaryObjectiveObject.SetActive(true);
     }
 
     public void NCPGivesItem(Item item)

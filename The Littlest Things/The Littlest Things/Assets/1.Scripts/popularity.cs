@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DialogueEditor;
+
 public class popularity : MonoBehaviour
 {
     public int popularityPoints;
@@ -13,12 +15,16 @@ public class popularity : MonoBehaviour
 
     public Slider popularitySlider;
     public TMP_Text objectiveText;
+    public AudioSource pickupSound;
+    public ConversationManager conversationManager;
+
+    private int convoChocolate;
 
     private void Start()
     {
         popularityPoints = 2;
         minPopularity = 0;
-        maxPopularity = 2;
+        maxPopularity = 10;
     }
 
     public void changeChocolate(int popChange)
@@ -28,7 +34,20 @@ public class popularity : MonoBehaviour
         if(popularityPoints < minPopularity) popularityPoints = minPopularity;
 
         chocolateText.text = popularityPoints.ToString();
+        pickupSound.Play();
         //popularitySlider.value = popularityPoints;
+    }
+
+    public void checkChocolate()
+    {
+        if(popularityPoints >= 2)
+        {
+            ConversationManager.Instance.SetBool("enoughChocolate", true);
+        }
+        else
+        {
+            ConversationManager.Instance.SetBool("enoughChocolate", false);
+        }
     }
 
     public void ChangeObjective()
